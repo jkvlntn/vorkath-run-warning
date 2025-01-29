@@ -10,14 +10,39 @@ import java.awt.Color;
 @ConfigGroup("vorkathrunwarning")
 public interface VorkathRunWarningConfig extends Config
 {
+	@ConfigItem(
+		keyName = "displayTintWarning",
+		name = "Display tint warning",
+		description = "Configures whether to warn by coloring the screen.",
+		position = 1
+	)
+	default boolean displayTintWarning() { return true; }
+
 	@Alpha
 	@ConfigItem(
-		keyName = "warningColor",
-		name = "Warning Color",
-		description = "Color used for the run warning overlay"
+		keyName = "tintColor",
+		name = "Tint color",
+		description = "Color used for the tint warning.",
+		position = 2
 	)
-	default Color warningColor()
+	default Color tintColor()
 	{
 		return new Color(255, 127, 127, 50);
 	}
+
+	@ConfigItem(
+		keyName = "displayTextWarning",
+		name = "Display text warning",
+		description = "Configures whether to warn with a text box.",
+		position = 3
+	)
+	default boolean displayTextWarning() { return true; }
+
+	@ConfigItem(
+		keyName = "textColor",
+		name = "Text color",
+		description = "Color used for the text warning.",
+		position = 4
+	)
+	default Color textColor() { return Color.white; }
 }

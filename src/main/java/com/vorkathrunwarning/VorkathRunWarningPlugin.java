@@ -40,7 +40,10 @@ public class VorkathRunWarningPlugin extends Plugin
 	private VorkathRunWarningConfig config;
 
 	@Inject
-	private VorkathRunWarningOverlay overlay;
+	private VorkathRunWarningTintOverlay tintOverlay;
+
+	@Inject
+	private VorkathRunWarningTextOverlay textOverlay;
 
 	@Inject
 	private OverlayManager overlayManager;
@@ -55,13 +58,15 @@ public class VorkathRunWarningPlugin extends Plugin
 	protected void startUp() throws Exception
 	{
 		updateShouldWarn();
-		overlayManager.add(overlay);
+		overlayManager.add(tintOverlay);
+		overlayManager.add(textOverlay);
 	}
 
 	@Override
 	protected void shutDown() throws Exception
 	{
-		overlayManager.remove(overlay);
+		overlayManager.remove(tintOverlay);
+		overlayManager.remove(textOverlay);
 	}
 
 	@Subscribe
