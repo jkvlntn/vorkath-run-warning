@@ -3,11 +3,10 @@ package com.vorkathrunwarning;
 import net.runelite.api.Client;
 import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayPosition;
+import net.runelite.client.ui.overlay.components.TitleComponent;
 
 import javax.inject.Inject;
-import java.awt.Graphics2D;
-import java.awt.Dimension;
-import java.awt.Rectangle;
+import java.awt.*;
 
 public class VorkathRunWarningTintOverlay extends Overlay {
 
@@ -32,6 +31,9 @@ public class VorkathRunWarningTintOverlay extends Overlay {
         graphics.setColor(this.config.tintColor());
         graphics.fill(screenRect);
         graphics.draw(screenRect);
+        TitleComponent pluginIndicator = TitleComponent.builder().text("Vorkath Run Warning Active").build();
+        pluginIndicator.setPreferredLocation(new Point(8, 20));
+        pluginIndicator.render(graphics);
         return null;
     }
 }
